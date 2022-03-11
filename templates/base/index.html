@@ -2,37 +2,116 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
-        <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Auxiliar de Controle e Manutenção de Agência">
+  <meta name="author" content="Wesley Paulo Gonçalves (wpgoncalves1984@gmail.com)">
+  <meta name="generator" content="ACOMAG 1.0">
 
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="canonical" href="#">
 
-        <title>Auxiliar de Controle e Manutenção de Agência (ACOMAG)</title>
-    </head>
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 
-    <body>
-        <div class="box">
-            <div class="header">
-                {% include 'base/header.html' %}
-            </div>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel='stylesheet' href="{% static 'css/boxicons.css' %}">
 
-            <div class="body">
-                {% block 'body' %}{% endblock 'body' %}
-            </div>
+  <title>ACOMAG - Auxiliar de Controle e Manutenção de Agência</title>
+</head>
 
-            <div class="footer">
-                {% include 'base/footer.html' %}
-            </div>
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="{% static 'img/data-management.png' %}" alt="brand">
+        </span>
+
+        <div class="text logo-text">
+          <span class="brand">ACOMAG</span>
+          <span class="mail-agency">AC Pindamonhangaba</span>
         </div>
+      </div>
 
-        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    </body>
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Home</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-mail-send icon'></i>
+              <span class="text nav-text">Caixas Postais</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-basket icon'></i>
+              <span class="text nav-text">Estoque/Produtos</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-extension icon'></i>
+              <span class="text nav-text">Ferramentas</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <span class="text nav-text">Relatórios</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="">
+          <a href="#">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>
+        </li>
+
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">Dark mode</span>
+
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+
+      </div>
+    </div>
+  </nav>
+
+  <section class="home">
+    <div class="text">Dashboard Sidebar</div>
+  </section>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+
 </html>
