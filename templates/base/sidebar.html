@@ -1,0 +1,90 @@
+{% load static %}
+
+<nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="{% static 'img/data-management.png' %}" alt="brand">
+        </span>
+
+        <div class="text logo-text">
+          <span class="brand">ACOMAG</span>
+          <span class="mail-agency">AC Pindamonhangaba</span>
+        </div>
+      </div>
+
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Home</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-mail-send icon'></i>
+              <span class="text nav-text">Caixas Postais</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-basket icon'></i>
+              <span class="text nav-text">Estoque/Produtos</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-extension icon'></i>
+              <span class="text nav-text">Ferramentas</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <span class="text nav-text">Relatórios</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="">
+          <a href="#">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>  
+        </li>
+
+        <li class="">
+          <a href="{% url 'admin' %}">
+            <i class='bx bx-traffic-cone icon'></i>
+            <span class="text nav-text">Administrador</span>
+          </a>
+        </li>
+  
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">Dark mode</span>
+
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+
+      </div>
+    </div>
+  </nav>
