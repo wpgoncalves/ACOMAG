@@ -1,5 +1,5 @@
 from django.contrib import admin
-from poboxes.models import Adresses, Customers, Phones, Emails
+from poboxes.models import Adresses, Customers, POBoxes, Phones, Emails
 
 
 @admin.register(Customers)
@@ -27,3 +27,10 @@ class PhonesAdmin(admin.ModelAdmin):
 class EmailsAdmin(admin.ModelAdmin):
     list_display = ('email',)
     search_fields = ('email',)
+
+
+@admin.register(POBoxes)
+class POBoxesAdmin(admin.ModelAdmin):
+    list_display = ('number', 'type', 'extra_key', 'active')
+    search_fields = ('number',)
+    list_filter = ('type', 'extra_key', 'pib', 'active')

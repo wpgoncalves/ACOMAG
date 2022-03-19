@@ -104,7 +104,9 @@ class Adresses(models.Model):
         verbose_name_plural = 'Endereços'
         constraints = [
             models.UniqueConstraint(
-                fields=['cep'], name='cep_constraints')
+                fields=['cep', ],
+                name='adresses_cep_constraints'
+            )
         ]
 
     def __str__(self):
@@ -130,8 +132,10 @@ class Phones (models.Model):
         verbose_name = 'Telefone'
         verbose_name_plural = 'Telefones'
         constraints = [
-            models.UniqueConstraint(fields=['number', ],
-                                    name='phones_constraints')
+            models.UniqueConstraint(
+                fields=['number', ],
+                name='phones_number_constraints'
+            )
         ]
 
     def __str__(self):
@@ -146,8 +150,10 @@ class Emails(models.Model):
         verbose_name = 'Email'
         verbose_name_plural = 'Emails'
         constraints = [
-            models.UniqueConstraint(fields=['email'],
-                                    name='emails_constraints')
+            models.UniqueConstraint(
+                fields=['email', ],
+                name='emails_email_constraints'
+            )
         ]
 
     def __str__(self):
@@ -199,7 +205,8 @@ class Customers (models.Model):
                                     verbose_name='Telefones')
 
     emails = models.ManyToManyField(Emails,
-                                    verbose_name='E-mails')
+                                    verbose_name='E-mails',
+                                    blank=True)
 
     class Meta:
         ordering = ['name']
@@ -207,8 +214,59 @@ class Customers (models.Model):
         verbose_name_plural = 'Clientes'
         constraints = [
             models.UniqueConstraint(
-                fields=['cpf_cnpj'], name='cpf_cnpj_constraints')
+                fields=['cpf_cnpj', ],
+                name='customers_cpf_cnpj_constraints'
+            )
         ]
 
     def __str__(self):
         return self.name
+
+
+class POBoxes (models.Model):
+
+    class TypeChoices(models.TextChoices):
+        SIMPLES = 'Simples', 'Simples'
+        DUPLA = 'Dupla', 'Dupla'
+
+    class ExtraKeyChoices(models.TextChoices):
+        SIM = 'Sim', 'Sim'
+        NAO = 'Não', 'Não'
+        VERIFICAR = 'Verificar', 'Verificar'
+
+    number = models.IntegerField(verbose_name='Número')
+
+    block = models.IntegerField(verbose_name='Bloco',
+                                blank=True,
+                                null=True)
+
+    type = models.CharField(max_length=7,
+                            verbose_name='Tipo',
+                            choices=TypeChoices.choices,
+                            default='Simples')
+
+    pib = models.IntegerField(verbose_name='PIB',
+                              blank=True,
+                              null=True)
+
+    extra_key = models.CharField(max_length=9,
+                                 verbose_name='Chave Reserva',
+                                 choices=ExtraKeyChoices.choices,
+                                 default='Verificar')
+
+    active = models.BooleanField(verbose_name='Ativa',
+                                 default=True)
+
+    class Meta:
+        ordering = ['number']
+        verbose_name = 'Caixa Postal'
+        verbose_name_plural = 'Caixas Postais'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['number', ],
+                name='poboxes_number_constraints'
+            )
+        ]
+
+    def __str__(self):
+        return str(self.number)
