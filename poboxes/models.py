@@ -292,9 +292,13 @@ class Rentals(models.Model):
                                      blank=True,
                                      null=True)
 
-    warned_in = models.DateField(verbose_name='Avisado em')
+    warned_in = models.DateField(verbose_name='Avisado em',
+                                 blank=True,
+                                 null=True)
 
-    sealed_in = models.DateField(verbose_name='Lacrado em')
+    sealed_in = models.DateField(verbose_name='Lacrado em',
+                                 blank=True,
+                                 null=True)
 
     expired = models.BooleanField(default=False,
                                   verbose_name='Expirado')
