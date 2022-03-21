@@ -113,7 +113,7 @@ class Adresses(models.Model):
         return self.address
 
 
-class Phones (models.Model):
+class Phones(models.Model):
 
     class TypeChoices(models.TextChoices):
         HOME = 'Residêncial', 'Residêncial'
@@ -160,7 +160,7 @@ class Emails(models.Model):
         return self.email
 
 
-class Customers (models.Model):
+class Customers(models.Model):
 
     class KindChoices(models.TextChoices):
         FISICA = 'Física', 'Física'
@@ -223,7 +223,7 @@ class Customers (models.Model):
         return self.name
 
 
-class POBoxes (models.Model):
+class POBoxes(models.Model):
 
     class TypeChoices(models.TextChoices):
         SIMPLES = 'Simples', 'Simples'
@@ -270,3 +270,39 @@ class POBoxes (models.Model):
 
     def __str__(self):
         return str(self.number)
+
+
+class Rentals(models.Model):
+
+    pobox_id = models.OneToOneField(POBoxes,
+                                    on_delete=models.PROTECT,
+                                    verbose_name='Caixa Postal')
+
+    customer_id = models.ForeignKey(Customers,
+                                    on_delete=models.PROTECT,
+                                    verbose_name='Cliente')
+
+    start_validity = models.DateField(verbose_name='Vigência')
+
+    end_validity = models.DateField(verbose_name='Vencimento')
+
+    rent_value = models.DecimalField(max_digits=6,
+                                     decimal_places=2,
+                                     verbose_name='Valor',
+                                     blank=True,
+                                     null=True)
+
+    warned_in = models.DateField(verbose_name='Avisado em')
+
+    sealed_in = models.DateField(verbose_name='Lacrado em')
+
+    expired = models.BooleanField(default=False,
+                                  verbose_name='Expirado')
+
+    class Meta:
+        ordering = ['pobox_id']
+        verbose_name = 'Aluguel'
+        verbose_name_plural = 'Aluguéis'
+
+    def __str__(self):
+        return str(self.pobox_id)
