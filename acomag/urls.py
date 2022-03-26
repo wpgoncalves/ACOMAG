@@ -11,6 +11,8 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin/', RedirectView.as_view(url='admin/'), name='admin'),
+    path("poboxes/", include('poboxes.urls')),
+    path("customers/", include('customers.urls')),
     path('', home, name='home'),
-    path('email/', include('sendmail.urls'))
+    path('email/', include('sendmail.urls')),
 ]
