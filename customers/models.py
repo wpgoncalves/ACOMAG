@@ -168,7 +168,8 @@ class Customers(models.Model):
 
     kind = models.CharField(max_length=8,
                             verbose_name='Tipo',
-                            choices=KindChoices.choices)
+                            choices=KindChoices.choices,
+                            default='Física')
 
     cpf_cnpj = models.CharField(max_length=14,
                                 verbose_name='CPF/CNPJ')
@@ -193,9 +194,12 @@ class Customers(models.Model):
                                    verbose_name='Responsável')
 
     address = models.ManyToManyField(Adresses,
-                                     verbose_name='Endereço')
+                                     verbose_name='Endereço',
+                                     blank=True)
 
-    address_number = models.IntegerField(verbose_name='Número')
+    address_number = models.IntegerField(verbose_name='Número',
+                                         blank=True,
+                                         null=True)
 
     address_complement = models.CharField(max_length=120,
                                           verbose_name='Complemento',
