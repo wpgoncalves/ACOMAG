@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste (jQuery)</title>
+</head>
+
+<body>
+    <h1>Testes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Valor</th>
+                <th><button class="btn btn-sm btn-secondary">Check</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td data-saldo="0.00">0.00</td>
+                <th><button class="btn btn-sm btn-secondary saldo">Check</button></th>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td data-saldo="0.00">0.00</td>
+                <th><button class="btn btn-sm btn-secondary saldo">Check</button></th>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td data-saldo="0.00">0.00</td>
+                <th><button class="btn btn-sm btn-secondary saldo">Check</button></th>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        django.jQuery(document).ready(function(){
+            django.jQuery(".saldo").click(function(e){
+                e.preventDefault();
+                django.jQuery(this).closest("tr").find("td[data-saldo]").html("10,00");
+                django.jQuery(this).closest("tr").find("td[data-saldo]").attr("data-saldo", "10,00");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

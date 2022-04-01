@@ -79,7 +79,9 @@ class Adresses(models.Model):
         VILA = 'Vila', 'Vila'
 
     cep = models.CharField(max_length=8,
-                           verbose_name='CEP')
+                           verbose_name='CEP',
+                           primary_key=True,
+                           unique=True)
 
     type = models.CharField(max_length=60,
                             verbose_name='Tipo',
@@ -102,15 +104,10 @@ class Adresses(models.Model):
         ordering = ['cep']
         verbose_name = 'Endereço'
         verbose_name_plural = 'Endereços'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['cep', ],
-                name='adresses_cep_constraints'
-            )
-        ]
 
     def __str__(self):
-        return self.address
+        return self.type + ' ' + self.address + ', ' + self.district + ', ' + \
+            self.city + ', ' + self.state
 
 
 class Phones(models.Model):
@@ -121,40 +118,36 @@ class Phones(models.Model):
         COMMERCIAL = 'Comercial', 'Comercial'
 
     number = models.CharField(max_length=11,
-                              verbose_name='Telefone')
+                              verbose_name='Telefone',
+                              primary_key=True,
+                              unique=True)
 
     type = models.CharField(max_length=11,
                             verbose_name='Tipo',
                             choices=TypeChoices.choices)
 
+    comments = models.TextField(verbose_name='Observações',
+                                blank=True,
+                                null=True)
+
     class Meta:
         ordering = ['number']
         verbose_name = 'Telefone'
         verbose_name_plural = 'Telefones'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['number', ],
-                name='phones_number_constraints'
-            )
-        ]
 
     def __str__(self):
-        return self.number
+        return self.number + '(' + self.type + ')'
 
 
 class Emails(models.Model):
-    email = models.EmailField(verbose_name='E-mail')
+    email = models.EmailField(verbose_name='E-mail',
+                              primary_key=True,
+                              unique=True)
 
     class Meta:
         ordering = ['email']
         verbose_name = 'Email'
         verbose_name_plural = 'Emails'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['email', ],
-                name='emails_email_constraints'
-            )
-        ]
 
     def __str__(self):
         return self.email
@@ -172,7 +165,9 @@ class Customers(models.Model):
                             default='Física')
 
     cpf_cnpj = models.CharField(max_length=14,
-                                verbose_name='CPF/CNPJ')
+                                verbose_name='CPF/CNPJ',
+                                primary_key=True,
+                                unique=True)
 
     ie_rg = models.CharField(max_length=12,
                              blank=True,
@@ -217,12 +212,6 @@ class Customers(models.Model):
         ordering = ['name']
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['cpf_cnpj', ],
-                name='customers_cpf_cnpj_constraints'
-            )
-        ]
 
     def __str__(self):
         return self.name

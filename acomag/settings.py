@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'powaste',
     'stock',
     'login',
+    'tests',
 ]
 
 MIDDLEWARE = [

@@ -15,4 +15,5 @@ urlpatterns = [
     path("customers/", include('customers.urls')),
     path('', home, name='home'),
     path('email/', include('sendmail.urls')),
+    path('tests/', include('tests.urls')),
 ]
