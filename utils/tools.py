@@ -29,9 +29,9 @@ def is_preposition(word: str) -> bool:
         'dele', 'dela', 'deles', 'delas', 'deste', 'disto', 'desse', 'daquele',
         'daquilo', 'àquele', 'àquilo', 'praquilo', 'praquele', 'num', 'numa',
         'nuns', 'numas', 'nele', 'nela', 'neles', 'nelas', 'neste', 'nisto',
-        'nesse', 'nisso', 'naquele', 'naquilo'
+        'nesse', 'nisso', 'naquele', 'naquilo', 'de', 'e'
     ]
-    return word in list_prepositions
+    return word.lower() in list_prepositions
 
 
 def string_capitalize(value: str = None) -> str:

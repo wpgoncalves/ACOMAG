@@ -30,7 +30,7 @@ class CustomersAdmin(admin.ModelAdmin):
 @admin.register(Adresses)
 class AdressesAdmin(admin.ModelAdmin):
     form = AdressesForm
-    list_display = ('cep', 'type', 'address', 'district', 'city', 'state')
+    list_display = ('__str__', 'district', 'cep', 'city', 'state')
     search_fields = ('cep', 'address')
     list_filter = ('type', 'city', 'district', 'state')
     fieldsets = (
@@ -49,7 +49,7 @@ class AdressesAdmin(admin.ModelAdmin):
 @admin.register(Phones)
 class PhonesAdmin(admin.ModelAdmin):
     form = PhonesForm
-    list_display = ('number', 'type')
+    list_display = ('type', 'number')
     search_fields = ('number',)
     list_filter = ('type',)
     fieldsets = (

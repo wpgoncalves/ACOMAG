@@ -106,8 +106,7 @@ class Adresses(models.Model):
         verbose_name_plural = 'Endereços'
 
     def __str__(self):
-        return self.type + ' ' + self.address + ', ' + self.district + ', ' + \
-            self.city + ', ' + self.state
+        return self.type + ' ' + self.address
 
 
 class Phones(models.Model):
@@ -136,7 +135,7 @@ class Phones(models.Model):
         verbose_name_plural = 'Telefones'
 
     def __str__(self):
-        return self.number + '(' + self.type + ')'
+        return self.number
 
 
 class Emails(models.Model):
