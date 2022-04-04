@@ -33,7 +33,7 @@ django.jQuery(document).ready(function() {
     // Aplica máscaras aos campos da lista para visualização (Cep, Telefone e CPF/CNPJ).
     django.jQuery("td[class='field-cep']").attr("class", "field-cep vMaskCepTh");
     django.jQuery(".vMaskCepTh").mask("00000-000");
-    django.jQuery("body[class*='model-phones']").find("div[id='content']").find("h2").attr("class", "vMaskPhoneTh");
+    // django.jQuery("body[class*='model-phones']").find("div[id='content']").find("h2").attr("class", "vMaskPhoneTh");
     django.jQuery("td[class='field-number']").attr("class", "field-number vMaskPhoneTh");
     django.jQuery(".vMaskPhoneTh").mask(vMaskPhoneTh);
     django.jQuery("td[class='field-cpf_cnpj']").attr("class", "field-cpf_cnpj vMaskCpfCnpjTh");
